@@ -1,5 +1,4 @@
-export const EUR_TO_DZD = 145;
-export const PRICE_PER_DAY = 30;
+export const PRICE_PER_DAY = 4350;
 
 export const WILAYAS = [
   "Alger", "Oran", "Constantine", "Annaba", "Blida",

@@ -14,7 +14,7 @@ export default function PaymentPage() {
     return null;
   }
 
-  const { days, totalEUR, totalDZD, bookingRef } = state;
+  const { days, totalDZD, bookingRef } = state;
 
   const handleConfirm = () => {
     navigate("/confirmation", { state: { bookingRef } });
@@ -58,11 +58,11 @@ export default function PaymentPage() {
       <div className="cl-card">
         <div className="cl-card-header">Récapitulatif final</div>
         <div className="cl-summary-lines">
-          <div className="cl-summary-line"><span>Toyota Corolla Auto</span><span>{days} j × 30€</span></div>
+          <div className="cl-summary-line"><span>Toyota Corolla Auto</span><span>{days} j × 4 350 DA</span></div>
           <div className="cl-summary-line"><span>Assurance</span><span style={{ color: "var(--success)" }}>Incluse</span></div>
           <div className="cl-summary-line total">
             <span>Montant total</span>
-            <span className="amount">{totalEUR}€ ≈ {totalDZD.toLocaleString()} DZD</span>
+            <span className="amount">{totalDZD.toLocaleString()} DZD</span>
           </div>
         </div>
       </div>

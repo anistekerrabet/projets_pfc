@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { WILAYAS, PRICE_PER_DAY, EUR_TO_DZD } from "../constants";
+import { WILAYAS, PRICE_PER_DAY,} from "../constants";
 import CarSummary from "../components/CarSummary";
 
 export default function ReservationPage({ booking, setBooking }) {
@@ -13,18 +13,17 @@ export default function ReservationPage({ booking, setBooking }) {
     return d > 0 ? d : 0;
   })();
 
-  const totalEUR = PRICE_PER_DAY * days;
-  const totalDZD = Math.round(totalEUR * EUR_TO_DZD);
+  const totalDZD =PRICE_PER_DAY * days;
 
   const fmt = (d) => new Date(d).toLocaleDateString("fr-DZ", { day: "2-digit", month: "short", year: "numeric" });
   const today = new Date().toISOString().split("T")[0];
   const set = (key) => (e) => setBooking((b) => ({ ...b, [key]: e.target.value }));
 
-  const handleNext = () => {
-    if (days <= 0) { alert("Veuillez sélectionner vos dates de location."); return; }
-    const ref = "CARLOC-" + Math.random().toString(36).substr(2, 6).toUpperCase();
-    navigate("/payment", { state: { days, totalEUR, totalDZD, bookingRef: ref } });
-  };
+ const handleNext = () => {
+  if (days <= 0) { alert("Veuillez sélectionner vos dates de location."); return; }
+  const ref = "CARLOC-" + Math.random().toString(36).substr(2, 6).toUpperCase();
+  navigate("/payment", { state: { days, totalDZD, bookingRef: ref } });
+};
 
   return (
     <div>
@@ -122,13 +121,13 @@ export default function ReservationPage({ booking, setBooking }) {
         <div className="cl-card">
           <div className="cl-card-header">Récapitulatif</div>
           <div className="cl-summary-lines">
-            <div className="cl-summary-line"><span>Toyota Corolla Auto</span><span>30€/jour</span></div>
-            <div className="cl-summary-line"><span>{days} jour(s) × 30€</span><span>{totalEUR}€</span></div>
-            <div className="cl-summary-line"><span>Assurance incluse</span><span style={{ color: "var(--success)" }}>✓ Incluse</span></div>
-            <div className="cl-summary-line total">
-              <span>Total à payer</span>
-              <span className="amount">{totalEUR}€ ≈ {totalDZD.toLocaleString()} DZD</span>
-            </div>
+          <div className="cl-summary-line"><span>Toyota Corolla Auto</span><span>4 350 DA/jour</span></div>
+<div className="cl-summary-line"><span>{days} jour(s) × 4 350 DA</span><span>{totalDZD.toLocaleString()} DA</span></div>
+<div className="cl-summary-line"><span>Assurance incluse</span><span style={{ color: "var(--success)" }}>✓ Incluse</span></div>
+<div className="cl-summary-line total">
+  <span>Total à payer</span>
+  <span className="amount">{totalDZD.toLocaleString()} DZD</span>
+</div>
           </div>
         </div>
       )}
