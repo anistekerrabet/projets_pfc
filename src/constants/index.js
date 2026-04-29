@@ -1,10 +1,5 @@
 export const PRICE_PER_DAY = 4350;
 
-export const WILAYAS = [
-  "Alger", "Oran", "Constantine", "Annaba", "Blida",
-  "Sétif", "Tizi Ouzou", "Béjaïa", "Tlemcen", "Batna",
-];
-
 export const PAY_METHODS = [
   { id: "ccp",      icon: "🏦", label: "CCP / Virement", sub: "Algérie Poste" },
   { id: "edahabia", icon: "💳", label: "EDAHABIA",        sub: "Carte Poste"  },

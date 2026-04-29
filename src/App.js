@@ -5,11 +5,13 @@ import Stepper from "./components/Stepper";
 import ReservationPage from "./pages/ReservationPage";
 import PaymentPage from "./pages/PaymentPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
+import FleetAdmin from "./pages/FleetAdmin";
 import "./index.css";
 
 const STEP_MAP = { "/": 2, "/payment": 3, "/confirmation": 4 };
 
-function AppContent() {
+// Pages client : navbar + stepper
+function ClientLayout() {
   const { pathname } = useLocation();
   const currentStep = STEP_MAP[pathname] ?? 2;
 
@@ -36,7 +38,13 @@ function AppContent() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AppContent />
+      <Routes>
+        {/* Dashboard admin — layout propre sans navbar/stepper client */}
+        <Route path="/admin/*" element={<FleetAdmin />} />
+
+        {/* Interface client */}
+        <Route path="/*" element={<ClientLayout />} />
+      </Routes>
     </BrowserRouter>
   );
 }

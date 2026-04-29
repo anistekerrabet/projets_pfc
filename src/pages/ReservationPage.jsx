@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { WILAYAS, PRICE_PER_DAY,} from "../constants";
+import {PRICE_PER_DAY,} from "../constants";
 import CarSummary from "../components/CarSummary";
 
 export default function ReservationPage({ booking, setBooking }) {
   const navigate = useNavigate();
 
-  const { dateStart, dateEnd, wilaya, pickup, dropoff, prenom, nom, tel, email, permis } = booking;
+  const { dateStart, dateEnd, pickup, dropoff, prenom, nom, tel, email, permis } = booking;
 
   const days = (() => {
     if (!dateStart || !dateEnd) return 0;
@@ -56,15 +56,6 @@ export default function ReservationPage({ booking, setBooking }) {
       {/* Lieu */}
       <div className="cl-card">
         <div className="cl-card-header">Lieu de prise en charge</div>
-        <div className="cl-form-row cl-form-single">
-          <div className="cl-form-group">
-            <label className="cl-label">Wilaya</label>
-            <select className="cl-select" value={wilaya} onChange={set("wilaya")}>
-              <option value="">Sélectionner...</option>
-              {WILAYAS.map((w) => <option key={w}>{w}</option>)}
-            </select>
-          </div>
-        </div>
         <div className="cl-form-row">
           <div className="cl-form-group">
             <label className="cl-label">Lieu de prise en charge</label>
